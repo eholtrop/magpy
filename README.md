@@ -15,5 +15,5 @@ Wait what a git repo with a schedule? YES! I will be streaming every Sunday at 1
 
 ### January 31st 10:00am EST
 - Android Project setup
-- Maybe some https://www.igdb.com/api integration!
+- https://www.igdb.com/api integration!
 
