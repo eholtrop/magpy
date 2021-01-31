@@ -31,4 +31,5 @@ dependencies {
     implementation Dependencies.androidx_core
     implementation Dependencies.androidx_constraint
     implementation Dependencies.androidx_material
+    implementation project(':features:search')
 }

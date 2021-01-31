@@ -1,6 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext {
+        kotlin_version = '1.4.10'
+    }
     repositories {
         google()
         jcenter()
@@ -8,6 +11,7 @@ buildscript {
     dependencies {
         classpath Dependencies.gradle
         classpath Dependencies.kotlin_plugin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -23,6 +27,9 @@ subprojects {
                     targetSdkVersion Config.targetSdk
 
                     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+                }
+                buildFeatures {
+                    viewBinding true
                 }
                 compileOptions {
                     sourceCompatibility JavaVersion.VERSION_1_8

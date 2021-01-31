@@ -19,6 +19,8 @@ object Dependencies {
     const val androidx_constraint = "androidx.constraintlayout:constraintlayout:2.0.4"
     const val androidx_unit = "androidx.test.ext:junit:1.1.2"
 
+    const val coil = "io.coil-kt:coil:1.1.1"
+
     const val junit = "junit:junit:4.0"
     const val espresso = "androidx.test.espresso:espresso-core:3.3.0"
 }
