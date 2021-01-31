@@ -7,8 +7,12 @@ object Config {
 }
 
 object Dependencies {
+
+    const val klint_gradle = "org.jlleitschuh.gradle:ktlint-gradle:9.4.1"
+    const val klint_plugin = "org.jlleitschuh.gradle.ktlint"
+
     private const val kotlinVersion = "1.4.10"
-    const val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    const val kotlin_gradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     const val kotlin_stdLib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
     val gradle = "com.android.tools.build:gradle:4.1.2"

@@ -1,21 +1,31 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext {
-        kotlin_version = '1.4.10'
-    }
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath Dependencies.gradle
-        classpath Dependencies.kotlin_plugin
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath Dependencies.kotlin_gradle
+        classpath Dependencies.klint_gradle
     }
 }
 
+apply plugin: Dependencies.klint_plugin
+
 subprojects {
+
+    apply plugin: Dependencies.klint_plugin
+
+    // Optionally configure plugin
+    ktlint {
+        debug = true
+    }
+
     afterEvaluate { project ->
         if (project.hasProperty('android')) {
             android {
