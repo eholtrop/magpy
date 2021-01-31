@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.dpal.search.databinding.FragmentSearchBinding
 
-class SearchFragment: Fragment() {
+class SearchFragment : Fragment() {
 
     private var binding: FragmentSearchBinding? = null
 

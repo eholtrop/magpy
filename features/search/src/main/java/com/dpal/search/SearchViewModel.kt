@@ -4,7 +4,6 @@ import com.dpal.domain.game.Game
 
 class SearchViewModel {
 
-
     fun games(search: String): List<Game> {
         return listOf(
             Game(
@@ -21,7 +20,8 @@ class SearchViewModel {
                 "",
                 "https://upload.wikimedia.org/wikipedia/en/2/2f/Yakuza_like_a_dragon_cover_art.jpg",
                 "Yakuza Like a Dragon"
-            ), Game(
+            ),
+            Game(
                 "",
                 "https://static3.gamerantimages.com/wordpress/wp-content/uploads/2020/02/Halo-2-Box-Art.jpg?q=50&fit=crop&w=740&h=1054",
                 "Halo 2"
@@ -35,7 +35,8 @@ class SearchViewModel {
                 "",
                 "https://upload.wikimedia.org/wikipedia/en/2/2f/Yakuza_like_a_dragon_cover_art.jpg",
                 "Yakuza Like a Dragon"
-            ), Game(
+            ),
+            Game(
                 "",
                 "https://static3.gamerantimages.com/wordpress/wp-content/uploads/2020/02/Halo-2-Box-Art.jpg?q=50&fit=crop&w=740&h=1054",
                 "Halo 2"
@@ -49,7 +50,8 @@ class SearchViewModel {
                 "",
                 "https://upload.wikimedia.org/wikipedia/en/2/2f/Yakuza_like_a_dragon_cover_art.jpg",
                 "Yakuza Like a Dragon"
-            ), Game(
+            ),
+            Game(
                 "",
                 "https://static3.gamerantimages.com/wordpress/wp-content/uploads/2020/02/Halo-2-Box-Art.jpg?q=50&fit=crop&w=740&h=1054",
                 "Halo 2"
@@ -63,7 +65,8 @@ class SearchViewModel {
                 "",
                 "https://upload.wikimedia.org/wikipedia/en/2/2f/Yakuza_like_a_dragon_cover_art.jpg",
                 "Yakuza Like a Dragon"
-            ), Game(
+            ),
+            Game(
                 "",
                 "https://static3.gamerantimages.com/wordpress/wp-content/uploads/2020/02/Halo-2-Box-Art.jpg?q=50&fit=crop&w=740&h=1054",
                 "Halo 2"
@@ -80,5 +83,4 @@ class SearchViewModel {
             )
         )
     }
-
 }

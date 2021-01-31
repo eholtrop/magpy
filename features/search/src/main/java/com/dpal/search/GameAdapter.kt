@@ -2,7 +2,6 @@ package com.dpal.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,14 +11,14 @@ import com.dpal.search.databinding.AdapterGameBinding
 
 class GameViewHolder(
     private val binding: AdapterGameBinding
-): RecyclerView.ViewHolder(binding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(model: Game) {
         binding.boxart.load(model.boxart)
     }
 }
 
-class GameAdapter: ListAdapter<Game, GameViewHolder>(
+class GameAdapter : ListAdapter<Game, GameViewHolder>(
     GameDiffer()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
@@ -29,10 +28,9 @@ class GameAdapter: ListAdapter<Game, GameViewHolder>(
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         holder.bind(currentList[position])
     }
-
 }
 
-class GameDiffer: DiffUtil.ItemCallback<Game>() {
+class GameDiffer : DiffUtil.ItemCallback<Game>() {
     override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
         return oldItem.id == newItem.id
     }
