@@ -1,3 +1,5 @@
+import com.dpal.Dependencies
+
 plugins {
     id 'java-library'
     id 'kotlin'
@@ -9,5 +11,5 @@ java {
 }
 
 dependencies {
-    implementation Dependencies.kotlin_stdLib
+    implementation Dependencies.Kotlin.stdLib
 }
