@@ -6,23 +6,24 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.dpal.domain.game.Game
+import com.dpal.domain.game.GameTile
 import com.dpal.search.databinding.AdapterGameBinding
 
 class GameViewHolder(
     private val binding: AdapterGameBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(model: Game) {
-        binding.boxart.load(model.boxart)
+    fun bind(model: GameTile) {
+        binding.image.load(model.boxArt)
+        binding.title.text = model.name
     }
 }
 
-class GameAdapter : ListAdapter<Game, GameViewHolder>(
+class GameAdapter : ListAdapter<GameTile, GameViewHolder>(
     GameDiffer()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
-        return GameViewHolder(AdapterGameBinding.inflate(LayoutInflater.from(parent.context)))
+        return GameViewHolder(AdapterGameBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
@@ -30,12 +31,12 @@ class GameAdapter : ListAdapter<Game, GameViewHolder>(
     }
 }
 
-class GameDiffer : DiffUtil.ItemCallback<Game>() {
-    override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
-        return oldItem.id == newItem.id
+class GameDiffer : DiffUtil.ItemCallback<GameTile>() {
+    override fun areItemsTheSame(oldItem: GameTile, newItem: GameTile): Boolean {
+        return false
     }
 
-    override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean {
+    override fun areContentsTheSame(oldItem: GameTile, newItem: GameTile): Boolean {
         return oldItem == newItem
     }
 }

@@ -1,4 +1,4 @@
-package com.dpal.domain.game
+package com.dpal.games
 
 data class Game(
     val id: String,

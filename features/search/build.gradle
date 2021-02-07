@@ -11,5 +11,13 @@ dependencies {
     implementation Dependencies.AndroidX.constraint
     implementation Dependencies.AndroidX.material
     implementation Dependencies.coil
+    implementation Dependencies.Rx.java
+    implementation Dependencies.Rx.android
+    implementation Dependencies.Rx.Binding.core
+    implementation Dependencies.drivable
+    implementation Dependencies.Rx.bridge
+    implementation "io.reactivex.rxjava2:rxjava:2.2.20"
+
     implementation project(':domain:game')
+    implementation project(':libs:style')
 }

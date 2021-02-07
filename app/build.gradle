@@ -36,7 +36,14 @@ dependencies {
     implementation Dependencies.AndroidX.core
     implementation Dependencies.AndroidX.constraint
     implementation Dependencies.AndroidX.material
+    implementation Dependencies.Retrofit.core
+    implementation Dependencies.Retrofit.gson
+    implementation Dependencies.Retrofit.rx
     implementation project(':features:search')
+    implementation project(':data:games')
+    implementation project(':domain:game')
+    implementation project(':services:rawg')
+
 }
 
 Object propOrDef(String propertyName, Object defaultValue) {

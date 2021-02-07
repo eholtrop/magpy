@@ -1,3 +1,6 @@
+include ':libs:style'
+include ':data:games'
+include ':services:rawg'
 include ':domain:game'
 include ':features:search'
 include ':app'

@@ -12,6 +12,9 @@ java {
 
 dependencies {
     implementation Dependencies.Kotlin.stdLib
+    implementation Dependencies.Retrofit.core
+    implementation Dependencies.Retrofit.gson
+    implementation Dependencies.Retrofit.rx
     implementation Dependencies.Rx.java
     implementation project(':data:games')
 }
