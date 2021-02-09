@@ -1,17 +1,32 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+import com.dpal.Dependencies
+import com.dpal.Config
 
 buildscript {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath Dependencies.gradle
-        classpath Dependencies.kotlin_plugin
+        classpath Dependencies.Kotlin.gradle
+        classpath Dependencies.Klint.gradle
     }
 }
 
+apply plugin: Dependencies.Klint.plugin
+
 subprojects {
+
+    apply plugin: Dependencies.Klint.plugin
+
+    ktlint {
+        debug = true
+    }
+
     afterEvaluate { project ->
         if (project.hasProperty('android')) {
             android {
@@ -23,6 +38,9 @@ subprojects {
                     targetSdkVersion Config.targetSdk
 
                     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+                }
+                buildFeatures {
+                    viewBinding true
                 }
                 compileOptions {
                     sourceCompatibility JavaVersion.VERSION_1_8
@@ -40,6 +58,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
 }
 

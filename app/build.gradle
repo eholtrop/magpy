@@ -1,3 +1,5 @@
+import com.dpal.Dependencies
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
@@ -9,11 +11,14 @@ android {
         applicationId "com.dpal.magpy"
         versionCode 1
         versionName "1.0"
+
+        buildConfigField "String", "RAWG_API_KEY", "\"" + propOrDef("RAWG_MAGPY_API_KEY", "") + "\""
     }
 
     buildTypes {
         release {
             minifyEnabled false
+
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -27,8 +32,21 @@ android {
 }
 
 dependencies {
-    implementation Dependencies.kotlin_stdLib
-    implementation Dependencies.androidx_core
-    implementation Dependencies.androidx_constraint
-    implementation Dependencies.androidx_material
+    implementation Dependencies.Kotlin.stdLib
+    implementation Dependencies.AndroidX.core
+    implementation Dependencies.AndroidX.constraint
+    implementation Dependencies.AndroidX.material
+    implementation Dependencies.Retrofit.core
+    implementation Dependencies.Retrofit.gson
+    implementation Dependencies.Retrofit.rx
+    implementation project(':features:search')
+    implementation project(':data:games')
+    implementation project(':domain:game')
+    implementation project(':services:rawg')
+
+}
+
+Object propOrDef(String propertyName, Object defaultValue) {
+    def propertyValue = project.properties[propertyName]
+    return propertyValue != null ? propertyValue : defaultValue
 }

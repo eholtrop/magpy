@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="1.7">
+      <module name="Magpy.app" target="1.8" />
+      <module name="Magpy.buildSrc" target="1.8" />
+      <module name="Magpy.domain.game" target="1.8" />
+      <module name="Magpy.features.search" target="1.8" />
+      <module name="Magpy.libs.style" target="1.8" />
+      <module name="Magpy.services.rawg" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

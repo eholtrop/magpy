@@ -17,3 +17,11 @@ Wait what a git repo with a schedule? YES! I will be streaming every Sunday at 1
 - Android Project setup
 - https://www.igdb.com/api integration!
 
+## How to Run
+
+- Get an API key from [RAWG](https://rawg.io/apidocs)
+- Add API key to your system local.properties like so:
+RAWG_MAGPY_API_KEY={api_key_here}
+
+to learn more about where that file exists check out this [article](https://www.baeldung.com/gradle-build-settings-properties)
+
