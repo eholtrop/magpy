@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-android'
 }
 
+
 dependencies {
     implementation Dependencies.Kotlin.stdLib
     implementation Dependencies.AndroidX.core
@@ -16,11 +17,6 @@ dependencies {
     implementation Dependencies.Rx.Binding.core
     implementation Dependencies.drivable
     implementation Dependencies.Rx.bridge
-    implementation Dependencies.Rx.two
-    implementation Dependencies.Rx.two
-    implementation Dependencies.Rx.ReplayingShare.core
-    implementation Dependencies.Rx.ReplayingShare.kotlin
 
-    implementation project(':domain:game')
     implementation project(':libs:style')
 }

@@ -1,8 +1,8 @@
 package com.dpal.rawg
 
-import com.dpal.games.Game
-import com.dpal.games.GameService
-import com.dpal.games.SearchRequest
+import com.dpal.games.data.Game
+import com.dpal.games.data.GameService
+import com.dpal.games.data.SearchRequest
 import com.dpal.rawg.models.SearchResponse
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.Retrofit

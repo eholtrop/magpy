@@ -14,7 +14,9 @@ interface RawgRetrofitService {
         @Query("page")
         page: Int,
         @Query("page_size")
-        pageSize: Int
+        pageSize: Int,
+        @Query("search_precise")
+        searchPrecise: Boolean = true
     ): Observable<SearchResponse>
 
 }

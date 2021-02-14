@@ -1,8 +1,8 @@
 package com.dpal.domain.game
 
-import com.dpal.games.Game
-import com.dpal.games.GameRepository
-import com.dpal.games.SearchRequest
+import com.dpal.games.data.Game
+import com.dpal.games.data.GameRepository
+import com.dpal.games.data.SearchRequest
 import io.reactivex.rxjava3.core.Observable
 import java.text.SimpleDateFormat
 
@@ -13,7 +13,7 @@ class SearchForGamesUseCase(
     operator fun invoke(
         query: String,
         page: Int
-    ): Observable<Search> {
+    ): Observable<List<GameTile>> {
         return gameRepository.search(
             SearchRequest(
                 query = query
@@ -24,29 +24,17 @@ class SearchForGamesUseCase(
 
     companion object {
 
-        fun toDomain(data: List<Game>): Search {
-            return Search.Data(
-                games = data.map {
-                    GameTile(
-                        name = it.name,
-                        boxArt = it.boxart,
-                        releaseDate = SimpleDateFormat("MMMM dd - yyyy").format(it.releaseDate)
-                    )
-                }
-            )
+        fun toDomain(data: List<Game>): List<GameTile> {
+            return data.map {
+                GameTile(
+                    id = it.id,
+                    name = it.name,
+                    boxArt = it.boxart,
+                    releaseDate = it.releaseDate?.let { SimpleDateFormat("MMMM dd, yyyy").format(it) }
+                        ?: "Unreleased"
+                )
+            }
         }
 
     }
 }
-
-sealed class Search {
-    data class Data(
-        val games: List<GameTile>
-    ): Search()
-}
-
-data class GameTile(
-    val name: String,
-    val boxArt: String,
-    val releaseDate: String,
-)

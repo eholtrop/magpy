@@ -1,4 +1,4 @@
-package com.dpal.games
+package com.dpal.games.data
 
 import io.reactivex.rxjava3.core.Observable
 

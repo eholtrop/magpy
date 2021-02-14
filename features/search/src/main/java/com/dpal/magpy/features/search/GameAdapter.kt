@@ -1,24 +1,11 @@
-package com.dpal.search
+package com.dpal.magpy.features.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.dpal.domain.game.GameTile
 import com.dpal.search.databinding.AdapterGameBinding
-
-class GameViewHolder(
-    private val binding: AdapterGameBinding
-) : RecyclerView.ViewHolder(binding.root) {
-
-    fun bind(model: GameTile) {
-        binding.image.load(model.boxArt)
-        binding.title.text = model.name
-        binding.releaseDate.text = model.releaseDate
-    }
-}
 
 class GameAdapter : ListAdapter<GameTile, GameViewHolder>(
     GameDiffer()

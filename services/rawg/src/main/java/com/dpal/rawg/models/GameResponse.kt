@@ -8,5 +8,5 @@ data class GameResponse(
     val name: String,
     @SerializedName("background_image")
     val backgroundImage: String?,
-    val released: Date
+    val released: Date?
 )

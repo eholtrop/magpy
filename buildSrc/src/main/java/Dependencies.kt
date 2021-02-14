@@ -43,6 +43,11 @@ object Dependencies {
         const val kotlin = "io.reactivex.rxjava3:rxkotlin:3.0.0"
         const val android = "io.reactivex.rxjava3:rxandroid:3.0.0"
 
+        object ReplayingShare {
+            private const val version = "3.0.0"
+            const val core = "com.jakewharton.rx3:replaying-share:$version"
+            const val kotlin = "com.jakewharton.rx3:replaying-share-kotlin:$version"
+        }
 
         const val bridge = "com.github.akarnokd:rxjava3-bridge:3.0.0"
 
