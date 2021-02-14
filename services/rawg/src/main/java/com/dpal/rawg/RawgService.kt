@@ -29,7 +29,8 @@ fun toData(response: SearchResponse): List<Game> {
         Game(
             id = it.id,
             name = it.name,
-            boxart = it.backgroundImage ?: ""
+            boxart = it.backgroundImage ?: "",
+            releaseDate = it.released
         )
     }
 }

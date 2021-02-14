@@ -16,6 +16,7 @@ class GameViewHolder(
     fun bind(model: GameTile) {
         binding.image.load(model.boxArt)
         binding.title.text = model.name
+        binding.releaseDate.text = model.releaseDate
     }
 }
 

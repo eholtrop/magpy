@@ -4,6 +4,7 @@ import com.dpal.games.Game
 import com.dpal.games.GameRepository
 import com.dpal.games.SearchRequest
 import io.reactivex.rxjava3.core.Observable
+import java.text.SimpleDateFormat
 
 class SearchForGamesUseCase(
     private val gameRepository: GameRepository
@@ -28,7 +29,8 @@ class SearchForGamesUseCase(
                 games = data.map {
                     GameTile(
                         name = it.name,
-                        boxArt = it.boxart
+                        boxArt = it.boxart,
+                        releaseDate = SimpleDateFormat("MMMM dd - yyyy").format(it.releaseDate)
                     )
                 }
             )
@@ -45,5 +47,6 @@ sealed class Search {
 
 data class GameTile(
     val name: String,
-    val boxArt: String
+    val boxArt: String,
+    val releaseDate: String,
 )

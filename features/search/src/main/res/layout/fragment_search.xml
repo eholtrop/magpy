@@ -24,9 +24,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
-                android:paddingStart="16dp"
+                android:hint="Search"
+                android:maxLines="1"
                 android:minHeight="52dp"
-                android:hint="Search" />
+                android:paddingStart="16dp" />
 
         </FrameLayout>
     </com.google.android.material.appbar.AppBarLayout>
