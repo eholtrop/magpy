@@ -1,5 +1,6 @@
 package com.dpal.games.data
 
+import com.dpal.libs.optional.Optional
 import io.reactivex.rxjava3.core.Observable
 
 
@@ -8,7 +9,7 @@ data class SearchRequest(
 )
 
 interface GameService {
-    fun search(request: SearchRequest): Observable<List<Game>>
+    fun search(request: SearchRequest): Observable<Optional<List<Game>>>
 }
 
 interface GameRepository {
@@ -20,5 +21,11 @@ class GameRepositoryImpl(
 ): GameRepository {
     override fun search(request: SearchRequest): Observable<List<Game>> {
         return gameService.search(request)
+            .map {
+                when (it) {
+                    is Optional.Value<List<Game>> -> it.value
+                    is Optional.Error -> emptyList()
+                }
+            }
     }
 }

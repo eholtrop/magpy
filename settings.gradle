@@ -1,3 +1,4 @@
+include ':libs:optional'
 include ':libs:style'
 include ':data:games'
 include ':services:rawg'

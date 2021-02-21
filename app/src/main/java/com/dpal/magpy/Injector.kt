@@ -39,10 +39,9 @@ object Injector {
         GsonBuilder().setDateFormat("yyyy-mm-dd").create()
     }
 
-    val gameService: GameService
-        get() {
-            return RawgService(retrofit)
-        }
+    val gameService: GameService by lazy {
+        RawgService(retrofit)
+    }
 
     val gameRepository: GameRepository
         get() {

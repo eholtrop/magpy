@@ -12,6 +12,4 @@ java {
 
 dependencies {
     implementation Dependencies.Kotlin.stdLib
-    implementation Dependencies.Rx.java
-    implementation project(':libs:optional')
 }

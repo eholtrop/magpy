@@ -63,6 +63,13 @@ class SearchFragment(
                     router.route(it)
                 }
         )
+
+        compositeDisposable.add(
+            viewModel.searchActive
+                .subscribe {
+                    binding?.searchProgressBar?.visibility = if (it) View.VISIBLE else View.GONE
+                }
+        )
     }
 
     override fun onResume() {
