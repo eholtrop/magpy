@@ -18,5 +18,7 @@ dependencies {
     implementation Dependencies.drivable
     implementation Dependencies.Rx.bridge
 
+    implementation project(':libs:rxandroid')
+    implementation project(':libs:rxcache')
     implementation project(':libs:style')
 }

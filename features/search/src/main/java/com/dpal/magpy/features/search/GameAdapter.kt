@@ -10,6 +10,7 @@ import com.dpal.search.databinding.AdapterGameBinding
 class GameAdapter : ListAdapter<GameTile, GameViewHolder>(
     GameDiffer()
 ) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
         return GameViewHolder(AdapterGameBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
@@ -21,7 +22,7 @@ class GameAdapter : ListAdapter<GameTile, GameViewHolder>(
 
 class GameDiffer : DiffUtil.ItemCallback<GameTile>() {
     override fun areItemsTheSame(oldItem: GameTile, newItem: GameTile): Boolean {
-        return false
+        return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(oldItem: GameTile, newItem: GameTile): Boolean {

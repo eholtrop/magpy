@@ -19,8 +19,8 @@ class RawgService(
     override fun search(request: SearchRequest): Observable<Optional<List<Game>>> {
         return service.search(
             query = request.query,
-            page = 1,
-            pageSize = 30
+            page = request.page,
+            pageSize = request.pageSize
         )
             .map { toData(it).optional() }
             .onErrorResumeNext {

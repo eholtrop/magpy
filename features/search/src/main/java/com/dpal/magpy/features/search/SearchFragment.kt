@@ -1,17 +1,24 @@
 package com.dpal.magpy.features.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.dpal.search.databinding.FragmentSearchBinding
-import com.jakewharton.rxbinding4.widget.textChanges
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.avianapps.drivable.drive
+import com.dpal.libs.rxandroidext.dispose
+import com.dpal.search.databinding.FragmentSearchBinding
+import com.jakewharton.rxbinding4.recyclerview.scrollEvents
+import com.jakewharton.rxbinding4.widget.textChanges
 import hu.akarnokd.rxjava3.bridge.RxJavaBridge.toV2Observable
-import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import java.io.InvalidClassException
+import kotlin.math.max
 
 class SearchFragment(
     private val viewModel: SearchViewModel,
@@ -22,7 +29,6 @@ class SearchFragment(
 
     private val adapter = GameAdapter()
 
-    private val compositeDisposable = CompositeDisposable()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,35 +47,47 @@ class SearchFragment(
             it.items.adapter = adapter
         }
 
-        toV2Observable(binding!!.search.textChanges())
+        toV2Observable(binding?.search?.textChanges())
             .map { it.toString() }
             .drive(viewModel.input.query)
+
+        toV2Observable(
+            binding?.items?.scrollEvents()
+                ?.subscribeOn(AndroidSchedulers.mainThread())
+                ?.map {
+                    when (val manager = binding?.items?.layoutManager) {
+                        is LinearLayoutManager -> manager.findLastVisibleItemPosition()
+                        is GridLayoutManager -> manager.findLastVisibleItemPosition()
+                        else -> throw InvalidClassException("LayoutManager must be LinearLayoutManager or GridLayoutManager")
+                    }
+                }
+                ?.observeOn(AndroidSchedulers.mainThread())
+        )
+            .scan(0) { max, value -> max(max, value) }
+            .distinct()
+            .map { it == binding?.items?.adapter?.itemCount?.minus(1) ?: false }
+            .filter { it }
+            .map { Unit }
+            .drive(viewModel.input.loadMore)
     }
 
     override fun onStart() {
         super.onStart()
 
-        compositeDisposable.add(
-            viewModel.games
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    adapter.submitList(it)
-                }
-        )
+        viewModel.games
+            .dispose(this) {
+                adapter.submitList(it)
+            }
 
-        compositeDisposable.add(
-            viewModel.gameClicked
-                .subscribe {
-                    router.route(it)
-                }
-        )
+        viewModel.gameClicked
+            .dispose(this) {
+                router.route(it)
+            }
 
-        compositeDisposable.add(
-            viewModel.searchActive
-                .subscribe {
-                    binding?.searchProgressBar?.visibility = if (it) View.VISIBLE else View.GONE
-                }
-        )
+        viewModel.searchActive
+            .dispose(this) {
+                binding?.searchProgressBar?.visibility = if (it) View.VISIBLE else View.GONE
+            }
     }
 
     override fun onResume() {
@@ -77,13 +95,13 @@ class SearchFragment(
         (activity as? AppCompatActivity)?.setSupportActionBar(binding?.toolbar)
     }
 
-    override fun onStop() {
-        super.onStop()
-        compositeDisposable.clear()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         binding = null
     }
+}
+
+
+fun <T> Observable<T>.debug(tag: String): Observable<T> {
+    return this.doOnNext { Log.d(tag, it.toString()) }
 }

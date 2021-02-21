@@ -13,7 +13,9 @@ dependencies {
     implementation Dependencies.coil
     implementation Dependencies.Rx.java
     implementation Dependencies.Rx.android
+    implementation Dependencies.Rx.kotlin
     implementation Dependencies.Rx.Binding.core
+    implementation Dependencies.Rx.Binding.recyclerview
     implementation Dependencies.drivable
     implementation Dependencies.Rx.bridge
     implementation Dependencies.Rx.two
@@ -22,5 +24,7 @@ dependencies {
     implementation Dependencies.Rx.ReplayingShare.kotlin
 
     implementation project(':domain:game')
+    implementation project(':libs:rxandroid')
+    implementation project(':libs:rxcache')
     implementation project(':libs:style')
 }

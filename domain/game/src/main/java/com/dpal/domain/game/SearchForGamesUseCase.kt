@@ -6,6 +6,12 @@ import com.dpal.games.data.SearchRequest
 import io.reactivex.rxjava3.core.Observable
 import java.text.SimpleDateFormat
 
+typealias Page = Int
+
+private const val PageSize = 10
+
+fun Int.toPage(): Page = this / PageSize
+
 class SearchForGamesUseCase(
     private val gameRepository: GameRepository
 ) {
@@ -16,7 +22,9 @@ class SearchForGamesUseCase(
     ): Observable<List<GameTile>> {
         return gameRepository.search(
             SearchRequest(
-                query = query
+                query = query,
+                page = page,
+                PageSize
             )
         )
             .map { toDomain(it) }

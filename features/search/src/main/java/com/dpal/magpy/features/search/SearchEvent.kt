@@ -1,8 +1,13 @@
 package com.dpal.magpy.features.search
 
-sealed class SearchEvent {
+import com.dpal.domain.game.GameTile
 
-    data class GameClicked(
-        val gameId: String
-    ): SearchEvent()
+
+sealed class SearchModels {
+    class Tiles(val gameTiles: List<GameTile>): SearchModels()
+    sealed class Event: SearchModels() {
+        data class GameClicked(
+            val gameId: String
+        ): Event()
+    }
 }
