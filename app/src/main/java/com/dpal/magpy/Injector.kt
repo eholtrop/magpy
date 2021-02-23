@@ -5,8 +5,8 @@ import com.dpal.games.data.GameRepository
 import com.dpal.games.data.GameRepositoryImpl
 import com.dpal.games.data.GameService
 import com.dpal.magpy.features.details.DetailsFragment
-import com.dpal.magpy.features.search.SearchEvent
 import com.dpal.magpy.features.search.SearchFragment
+import com.dpal.magpy.features.search.SearchModels
 import com.dpal.magpy.features.search.SearchRouter
 import com.dpal.rawg.RawgService
 import com.dpal.magpy.features.search.SearchViewModel
@@ -67,9 +67,9 @@ object Injector {
     val searchRouter: SearchRouter
         get() {
             return object : SearchRouter {
-                override fun route(event: SearchEvent) {
+                override fun route(event: SearchModels.Event) {
                     when (event) {
-                        is SearchEvent.GameClicked -> appCoordinator.state =
+                        is SearchModels.Event.GameClicked -> appCoordinator.state =
                             AppState.Details(event.gameId)
                     }
                 }

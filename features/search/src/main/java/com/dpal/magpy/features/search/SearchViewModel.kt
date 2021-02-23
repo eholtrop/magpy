@@ -33,6 +33,7 @@ class SearchViewModel(
     val games: Observable<List<GameTile>> = queryCache
         .debounce(300, TimeUnit.MILLISECONDS)
         .switchMap { query ->
+            pageCache.clear()
             pageCache
                 .concatMap { page ->
                     searchForGamesUseCase(

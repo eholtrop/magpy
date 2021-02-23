@@ -26,4 +26,6 @@ class ObservableCache<T>(
                 { observer?.onComplete() }
             )
     }
+
+    fun clear() = value.set(null)
 }
