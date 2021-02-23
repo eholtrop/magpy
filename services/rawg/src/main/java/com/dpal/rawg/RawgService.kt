@@ -24,11 +24,10 @@ class RawgService(
         )
             .map { toData(it).optional() }
             .onErrorResumeNext {
-                    throwable: Throwable ->
+                throwable: Throwable ->
                 Observable.just(throwable.error())
             }
     }
-
 }
 
 fun toData(response: SearchResponse): List<Game> {

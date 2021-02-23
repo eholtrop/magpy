@@ -33,9 +33,9 @@ object Dependencies {
 
     object Retrofit {
         private const val version = "2.9.0"
-        const val core = "com.squareup.retrofit2:retrofit:${version}"
-        const val gson = "com.squareup.retrofit2:converter-gson:${version}"
-        const val rx = "com.squareup.retrofit2:adapter-rxjava3:${version}"
+        const val core = "com.squareup.retrofit2:retrofit:$version"
+        const val gson = "com.squareup.retrofit2:converter-gson:$version"
+        const val rx = "com.squareup.retrofit2:adapter-rxjava3:$version"
     }
 
     object Rx {
@@ -54,9 +54,9 @@ object Dependencies {
 
         object Binding {
             const val version = "4.0.0"
-            const val core = "com.jakewharton.rxbinding4:rxbinding:${version}"
+            const val core = "com.jakewharton.rxbinding4:rxbinding:$version"
 
-            const val recyclerview = "com.jakewharton.rxbinding4:rxbinding-recyclerview:${version}"
+            const val recyclerview = "com.jakewharton.rxbinding4:rxbinding-recyclerview:$version"
         }
     }
 

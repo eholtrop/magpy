@@ -3,7 +3,6 @@ package com.dpal.domain.game
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.subjects.PublishSubject
 
-
 data class GameTile(
     val id: String,
     val name: String,
