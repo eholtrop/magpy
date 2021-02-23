@@ -25,6 +25,7 @@ object Dependencies {
     object AndroidX {
         const val core = "androidx.core:core-ktx:1.3.2"
         const val appCompat = "androidx.appcompat:appcompat:1.2.0"
+        const val fragmentKtx = "androidx.fragment:fragment-ktx:1.2.5"
         const val material = "com.google.android.material:material:1.3.0"
         const val constraint = "androidx.constraintlayout:constraintlayout:2.0.4"
         const val unit = "androidx.test.ext:junit:1.1.2"
@@ -39,16 +40,23 @@ object Dependencies {
 
     object Rx {
         const val two = "io.reactivex.rxjava2:rxjava:2.2.20"
-        const val java =  "io.reactivex.rxjava3:rxjava:3.0.0"
+        const val java = "io.reactivex.rxjava3:rxjava:3.0.0"
         const val kotlin = "io.reactivex.rxjava3:rxkotlin:3.0.0"
         const val android = "io.reactivex.rxjava3:rxandroid:3.0.0"
 
+        object ReplayingShare {
+            private const val version = "3.0.0"
+            const val core = "com.jakewharton.rx3:replaying-share:$version"
+            const val kotlin = "com.jakewharton.rx3:replaying-share-kotlin:$version"
+        }
 
         const val bridge = "com.github.akarnokd:rxjava3-bridge:3.0.0"
 
         object Binding {
             const val version = "4.0.0"
-            const val core ="com.jakewharton.rxbinding4:rxbinding:${version}"
+            const val core = "com.jakewharton.rxbinding4:rxbinding:${version}"
+
+            const val recyclerview = "com.jakewharton.rxbinding4:rxbinding-recyclerview:${version}"
         }
     }
 

@@ -1,0 +1,24 @@
+import com.dpal.Dependencies
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+
+dependencies {
+    implementation Dependencies.Kotlin.stdLib
+    implementation Dependencies.AndroidX.core
+    implementation Dependencies.AndroidX.constraint
+    implementation Dependencies.AndroidX.material
+    implementation Dependencies.coil
+    implementation Dependencies.Rx.java
+    implementation Dependencies.Rx.android
+    implementation Dependencies.Rx.Binding.core
+    implementation Dependencies.drivable
+    implementation Dependencies.Rx.bridge
+
+    implementation project(':libs:rxandroid')
+    implementation project(':libs:rxcache')
+    implementation project(':libs:style')
+}

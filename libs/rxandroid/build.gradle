@@ -1,0 +1,18 @@
+import com.dpal.Dependencies
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+dependencies {
+    implementation Dependencies.Kotlin.stdLib
+    implementation Dependencies.Rx.java
+    implementation Dependencies.AndroidX.fragmentKtx
+
+    implementation 'com.uber.autodispose2:autodispose:2.0.0'
+//    implementation 'com.uber.autodispose2:autodispose-android:2.0.0'
+//    implementation 'com.uber.autodispose2:autodispose-lifecycle:2.0.0'
+//    implementation 'com.uber.autodispose:autodispose-android-archcomponents:2.0.0'
+    implementation 'com.uber.autodispose2:autodispose-androidx-lifecycle:2.0.0'
+}

@@ -40,6 +40,7 @@ dependencies {
     implementation Dependencies.Retrofit.gson
     implementation Dependencies.Retrofit.rx
     implementation project(':features:search')
+    implementation project(':features:details')
     implementation project(':data:games')
     implementation project(':domain:game')
     implementation project(':services:rawg')
