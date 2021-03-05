@@ -1,6 +1,7 @@
 package com.dpal.magpy
 
 import androidx.fragment.app.FragmentManager
+import com.dpal.magpy.di.Injector
 
 sealed class AppState {
     object Search : AppState()
@@ -18,7 +19,7 @@ class AppCoordinator(
                     supportFragmentManager.beginTransaction()
                         .add(
                             R.id.content,
-                            Injector.searchFragment
+                            Injector.Fragments.searchFragment
                         )
                         .commit()
                 }
@@ -26,7 +27,7 @@ class AppCoordinator(
                     supportFragmentManager.beginTransaction()
                         .replace(
                             R.id.content,
-                            Injector.detailsFragment(value.imageUrl)
+                            Injector.Fragments.detailsFragment(value.imageUrl)
                         )
                         .addToBackStack("details")
                         .commit()
