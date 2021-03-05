@@ -1,6 +1,6 @@
 package com.dpal.magpy.di
 
-import com.dpal.domain.game.SearchForGamesUseCase
+import com.dpal.domain.search.SearchForGamesUseCase
 import com.dpal.games.data.GameRepository
 import com.dpal.games.data.GameRepositoryImpl
 import com.dpal.games.data.GameService

@@ -1,8 +1,8 @@
 package com.dpal.magpy.features.search
 
 import com.avianapps.drivable.Drivable
-import com.dpal.domain.game.GameTile
-import com.dpal.domain.game.SearchForGamesUseCase
+import com.dpal.domain.search.SearchTile
+import com.dpal.domain.search.SearchForGamesUseCase
 import com.dpal.libs.rxcache.ObservableCache
 import com.jakewharton.rx3.replayingShare
 import hu.akarnokd.rxjava3.bridge.RxJavaBridge.toV3Observable
@@ -30,7 +30,7 @@ class SearchViewModel(
     private val searchActiveSubject = PublishSubject.create<Boolean>()
     val searchActive: Observable<Boolean> = searchActiveSubject.hide()
 
-    val games: Observable<List<GameTile>> = queryCache
+    val games: Observable<List<SearchTile>> = queryCache
         .debounce(300, TimeUnit.MILLISECONDS)
         .switchMap { query ->
             pageCache.clear()
@@ -45,7 +45,7 @@ class SearchViewModel(
                     )
                         .doOnNext { searchActiveSubject.onNext(false) }
                 }
-                .scan(emptyList<GameTile>()) { list, page -> list + page }
+                .scan(emptyList<SearchTile>()) { list, page -> list + page }
         }
         .replayingShare()
 

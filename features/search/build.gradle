@@ -23,7 +23,7 @@ dependencies {
     implementation Dependencies.Rx.ReplayingShare.core
     implementation Dependencies.Rx.ReplayingShare.kotlin
 
-    implementation project(':domain:game')
+    implementation project(':domain:search')
     implementation project(':libs:rxandroid')
     implementation project(':libs:rxcache')
     implementation project(':libs:style')

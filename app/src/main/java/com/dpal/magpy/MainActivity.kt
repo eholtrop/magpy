@@ -2,6 +2,7 @@ package com.dpal.magpy
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.dpal.magpy.di.Injector
 
 class MainActivity : AppCompatActivity() {
 

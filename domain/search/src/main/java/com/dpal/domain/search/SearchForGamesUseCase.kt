@@ -1,4 +1,4 @@
-package com.dpal.domain.game
+package com.dpal.domain.search
 
 import com.dpal.games.data.Game
 import com.dpal.games.data.GameRepository
@@ -19,7 +19,7 @@ class SearchForGamesUseCase(
     operator fun invoke(
         query: String,
         page: Int
-    ): Observable<List<GameTile>> {
+    ): Observable<List<SearchTile>> {
         return gameRepository.search(
             SearchRequest(
                 query = query,
@@ -32,9 +32,9 @@ class SearchForGamesUseCase(
 
     companion object {
 
-        fun toDomain(data: List<Game>): List<GameTile> {
+        fun toDomain(data: List<Game>): List<SearchTile> {
             return data.map {
-                GameTile(
+                SearchTile(
                     id = it.id,
                     name = it.name,
                     boxArt = it.boxart,

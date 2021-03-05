@@ -42,7 +42,7 @@ dependencies {
     implementation project(':features:search')
     implementation project(':features:details')
     implementation project(':data:games')
-    implementation project(':domain:game')
+    implementation project(':domain:search')
     implementation project(':services:rawg')
 
 }
