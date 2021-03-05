@@ -8,8 +8,8 @@ import com.dpal.magpy.features.details.DetailsFragment
 import com.dpal.magpy.features.search.SearchFragment
 import com.dpal.magpy.features.search.SearchModels
 import com.dpal.magpy.features.search.SearchRouter
-import com.dpal.rawg.RawgService
 import com.dpal.magpy.features.search.SearchViewModel
+import com.dpal.rawg.RawgService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
@@ -25,7 +25,6 @@ object Injector {
     ) {
         appCoordinator = AppCoordinator(activity.supportFragmentManager)
     }
-
 
     val retrofit by lazy {
         Retrofit.Builder()
@@ -69,8 +68,9 @@ object Injector {
             return object : SearchRouter {
                 override fun route(event: SearchModels.Event) {
                     when (event) {
-                        is SearchModels.Event.GameClicked -> appCoordinator.state =
-                            AppState.Details(event.gameId)
+                        is SearchModels.Event.GameClicked ->
+                            appCoordinator.state =
+                                AppState.Details(event.gameId)
                     }
                 }
             }
@@ -92,5 +92,4 @@ object Injector {
             imageUrl
         )
     }
-
 }

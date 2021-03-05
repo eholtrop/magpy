@@ -29,7 +29,6 @@ class SearchFragment(
 
     private val adapter = GameAdapter()
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -100,7 +99,6 @@ class SearchFragment(
         binding = null
     }
 }
-
 
 fun <T> Observable<T>.debug(tag: String): Observable<T> {
     return this.doOnNext { Log.d(tag, it.toString()) }

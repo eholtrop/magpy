@@ -1,11 +1,9 @@
 package com.dpal.magpy.features.details
 
-import android.graphics.Outline
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewOutlineProvider
 import androidx.fragment.app.Fragment
 import coil.load
 import com.dpal.magpy.features.details.databinding.FragmentDetailsBinding
@@ -13,7 +11,7 @@ import com.dpal.magpy.features.details.databinding.FragmentDetailsBinding
 class DetailsFragment(
     val id: String,
     val imageUrl: String
-): Fragment() {
+) : Fragment() {
 
     private var binding: FragmentDetailsBinding? = null
 

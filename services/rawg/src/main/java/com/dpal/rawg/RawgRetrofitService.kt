@@ -18,5 +18,4 @@ interface RawgRetrofitService {
         @Query("search_precise")
         searchPrecise: Boolean = true
     ): Observable<SearchResponse>
-
 }

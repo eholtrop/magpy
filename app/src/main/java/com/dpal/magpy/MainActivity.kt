@@ -2,7 +2,6 @@ package com.dpal.magpy
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.dpal.magpy.features.search.SearchFragment
 
 class MainActivity : AppCompatActivity() {
 

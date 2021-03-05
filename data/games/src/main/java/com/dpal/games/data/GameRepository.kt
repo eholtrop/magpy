@@ -4,7 +4,6 @@ import com.dpal.libs.optional.Optional
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-
 data class SearchRequest(
     val query: String,
     val page: Int,
@@ -21,7 +20,7 @@ interface GameRepository {
 
 class GameRepositoryImpl(
     val gameService: GameService
-): GameRepository {
+) : GameRepository {
     override fun search(request: SearchRequest): Observable<List<Game>> {
         return gameService.search(request)
             .subscribeOn(Schedulers.io())
