@@ -31,6 +31,9 @@ class DetailsFragment(
         binding?.toolbar?.clipToOutline = true
         binding?.image?.clipToOutline = true
         binding?.image?.load(imageUrl)
+        binding?.compose?.setContent {
+            DetailsView()
+        }
     }
 
     override fun onDestroy() {
@@ -38,3 +41,4 @@ class DetailsFragment(
         binding = null
     }
 }
+

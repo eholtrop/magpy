@@ -1,3 +1,4 @@
+include ':domain:details'
 include ':libs:rxcache'
 include ':libs:rxandroid'
 include ':libs:optional'

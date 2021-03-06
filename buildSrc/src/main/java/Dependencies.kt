@@ -17,7 +17,7 @@ object Dependencies {
     }
 
     object Kotlin {
-        private const val kotlinVersion = "1.4.10"
+        private const val kotlinVersion = "1.4.30"
         const val gradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         const val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     }
@@ -60,7 +60,29 @@ object Dependencies {
         }
     }
 
-    val gradle = "com.android.tools.build:gradle:4.1.2"
+    object Compose {
+        const val core =  "androidx.compose.ui:ui:1.0.0-beta01"
+        const val runtime = "androidx.compose.runtime:runtime:1.0.0-beta-01"
+
+        // Tooling support (Previews, etc.)
+        const val tooling =  "androidx.compose.ui:ui-tooling:1.0.0-beta01"
+        // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+        const val foundation =  "androidx.compose.foundation:foundation:1.0.0-beta01"
+        // Material Design
+        const val material =  "androidx.compose.material:material:1.0.0-beta01"
+        // Material design icons
+        const val designIcons =  "androidx.compose.material:material-icons-core:1.0.0-beta01"
+        const val designIconsExtended =  "androidx.compose.material:material-icons-extended:1.0.0-beta01"
+        // Integration with activities
+        const val activity =  "androidx.activity:activity-compose:1.3.0-alpha03"
+        // Integration with ViewModels
+        const val viewModel =  "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02"
+        // Integration with observables
+        const val liveData =  "androidx.compose.runtime:runtime-livedata:1.0.0-beta01"
+        const val rxJava =  "androidx.compose.runtime:runtime-rxjava2:1.0.0-beta01"
+    }
+
+    val gradle = "com.android.tools.build:gradle:7.0.0-alpha08"
 
     const val coil = "io.coil-kt:coil:1.1.1"
 
