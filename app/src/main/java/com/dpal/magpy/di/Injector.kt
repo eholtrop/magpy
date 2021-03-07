@@ -1,5 +1,6 @@
 package com.dpal.magpy.di
 
+import com.dpal.domain.details.GetGameDetailsUseCase
 import com.dpal.domain.search.SearchForGamesUseCase
 import com.dpal.games.data.GameRepository
 import com.dpal.games.data.GameRepositoryImpl
@@ -7,7 +8,8 @@ import com.dpal.games.data.GameService
 import com.dpal.magpy.AppCoordinator
 import com.dpal.magpy.AppState
 import com.dpal.magpy.MainActivity
-import com.dpal.magpy.features.details.DetailsFragment
+import com.dpal.magpy.features.details.GameDetailsFragment
+import com.dpal.magpy.features.details.GameDetailsViewModel
 import com.dpal.magpy.features.search.SearchFragment
 import com.dpal.magpy.features.search.SearchModels
 import com.dpal.magpy.features.search.SearchRouter
@@ -59,25 +61,39 @@ object Injector {
 
     object UseCases {
 
-        val searchForGames: SearchForGamesUseCase
+        internal val searchForGames: SearchForGamesUseCase
             get() {
                 return SearchForGamesUseCase(
+                    Repository.game
+                )
+            }
+
+        internal val getGameDetails: GetGameDetailsUseCase
+            get() {
+                return GetGameDetailsUseCase(
                     Repository.game
                 )
             }
     }
 
     object ViewModels {
-        val search: SearchViewModel
+        internal val search: SearchViewModel
             get() {
                 return SearchViewModel(
                     UseCases.searchForGames
                 )
             }
+
+        internal fun gameDetails(id: String): GameDetailsViewModel {
+            return GameDetailsViewModel(
+                id,
+                UseCases.getGameDetails
+            )
+        }
     }
 
     object Routers {
-        val search: SearchRouter
+        internal val search: SearchRouter
             get() {
                 return object : SearchRouter {
                     override fun route(event: SearchModels.Event) {
@@ -102,11 +118,10 @@ object Injector {
             }
 
         fun detailsFragment(
-            imageUrl: String
-        ): DetailsFragment {
-            return DetailsFragment(
-                "",
-                imageUrl
+            id: String
+        ): GameDetailsFragment {
+            return GameDetailsFragment(
+                ViewModels.gameDetails(id)
             )
         }
     }

@@ -12,15 +12,18 @@ data class SearchRequest(
 
 interface GameService {
     fun search(request: SearchRequest): Observable<Optional<List<Game>>>
+    fun details(id: String): Observable<Optional<GameDetails>>
 }
 
 interface GameRepository {
     fun search(request: SearchRequest): Observable<List<Game>>
+    fun details(id: String): Observable<GameDetails>
 }
 
 class GameRepositoryImpl(
     val gameService: GameService
 ) : GameRepository {
+
     override fun search(request: SearchRequest): Observable<List<Game>> {
         return gameService.search(request)
             .subscribeOn(Schedulers.io())
@@ -28,6 +31,17 @@ class GameRepositoryImpl(
                 when (it) {
                     is Optional.Value<List<Game>> -> it.value
                     is Optional.Error -> emptyList()
+                }
+            }
+    }
+
+    override fun details(id: String): Observable<GameDetails> {
+        return gameService.details(id)
+            .subscribeOn(Schedulers.io())
+            .map {
+                when (it) {
+                    is Optional.Error -> TODO()
+                    is Optional.Value -> it.value
                 }
             }
     }

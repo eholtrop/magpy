@@ -10,7 +10,7 @@ dependencies {
     implementation Dependencies.AndroidX.core
     implementation Dependencies.AndroidX.constraint
     implementation Dependencies.AndroidX.material
-    implementation Dependencies.coil
+    implementation Dependencies.Coil.core
     implementation Dependencies.Rx.java
     implementation Dependencies.Rx.android
     implementation Dependencies.Rx.kotlin

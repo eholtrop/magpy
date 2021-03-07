@@ -3,8 +3,8 @@ package com.dpal.domain.search
 import com.dpal.games.data.Game
 import com.dpal.games.data.GameRepository
 import com.dpal.games.data.SearchRequest
+import com.example.dates.formatForUi
 import io.reactivex.rxjava3.core.Observable
-import java.text.SimpleDateFormat
 
 typealias Page = Int
 
@@ -38,8 +38,7 @@ class SearchForGamesUseCase(
                     id = it.id,
                     name = it.name,
                     boxArt = it.boxart,
-                    releaseDate = it.releaseDate?.let { SimpleDateFormat("MMMM dd, yyyy").format(it) }
-                        ?: "Unreleased"
+                    releaseDate = it.releaseDate.formatForUi()
                 )
             }
         }

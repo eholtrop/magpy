@@ -5,7 +5,7 @@ import com.dpal.magpy.di.Injector
 
 sealed class AppState {
     object Search : AppState()
-    data class Details(val imageUrl: String) : AppState()
+    data class Details(val id: String) : AppState()
 }
 
 class AppCoordinator(
@@ -27,7 +27,7 @@ class AppCoordinator(
                     supportFragmentManager.beginTransaction()
                         .replace(
                             R.id.content,
-                            Injector.Fragments.detailsFragment(value.imageUrl)
+                            Injector.Fragments.detailsFragment(id = value.id)
                         )
                         .addToBackStack("details")
                         .commit()

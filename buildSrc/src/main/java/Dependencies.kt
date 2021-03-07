@@ -79,12 +79,17 @@ object Dependencies {
         const val viewModel =  "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02"
         // Integration with observables
         const val liveData =  "androidx.compose.runtime:runtime-livedata:1.0.0-beta01"
-        const val rxJava =  "androidx.compose.runtime:runtime-rxjava2:1.0.0-beta01"
+        const val rxJava =  "androidx.compose.runtime:runtime-rxjava3:1.0.0-beta01"
     }
 
     val gradle = "com.android.tools.build:gradle:7.0.0-alpha08"
 
-    const val coil = "io.coil-kt:coil:1.1.1"
+    object Coil {
+        const val core = "io.coil-kt:coil:1.1.1"
+        const val accompanist = "dev.chrisbanes.accompanist:accompanist-coil:0.6.1"
+
+    }
+
 
     const val drivable = "com.github.eholtrop:drivable:1.0.1"
 
