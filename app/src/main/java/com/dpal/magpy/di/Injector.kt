@@ -1,5 +1,7 @@
 package com.dpal.magpy.di
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.dpal.domain.details.GetGameDetailsUseCase
 import com.dpal.domain.search.SearchForGamesUseCase
 import com.dpal.games.data.GameRepository
@@ -17,6 +19,7 @@ import com.dpal.magpy.features.search.SearchViewModel
 import com.dpal.rawg.RawgService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -24,10 +27,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 object Injector {
 
     lateinit var appCoordinator: AppCoordinator
+    lateinit var appContext: Context
 
     fun init(
         activity: MainActivity
     ) {
+        appContext = activity.applicationContext
         appCoordinator = AppCoordinator(activity.supportFragmentManager)
     }
 
@@ -35,6 +40,14 @@ object Injector {
         private val retrofit by lazy {
             Retrofit.Builder()
                 .baseUrl("https://api.rawg.io/api/")
+                .client(
+                    OkHttpClient.Builder()
+                        .addInterceptor(
+                            ChuckerInterceptor.Builder(appContext)
+                                .build()
+                        )
+                        .build()
+                )
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()

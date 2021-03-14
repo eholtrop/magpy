@@ -40,7 +40,7 @@ class GameRepositoryImpl(
             .subscribeOn(Schedulers.io())
             .map {
                 when (it) {
-                    is Optional.Error -> TODO()
+                    is Optional.Error -> throw it.throwable
                     is Optional.Value -> it.value
                 }
             }
