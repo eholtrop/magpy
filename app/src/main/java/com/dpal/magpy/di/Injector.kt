@@ -2,7 +2,12 @@ package com.dpal.magpy.di
 
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.dpal.data.tag.Tag
+import com.dpal.data.tag.TagCache
+import com.dpal.data.tag.TagRepository
 import com.dpal.domain.details.GetGameDetailsUseCase
+import com.dpal.domain.details.RemoveGameTagUseCase
+import com.dpal.domain.details.SaveGameTagUseCase
 import com.dpal.domain.search.SearchForGamesUseCase
 import com.dpal.games.data.GameRepository
 import com.dpal.games.data.GameRepositoryImpl
@@ -16,9 +21,12 @@ import com.dpal.magpy.features.search.SearchFragment
 import com.dpal.magpy.features.search.SearchModels
 import com.dpal.magpy.features.search.SearchRouter
 import com.dpal.magpy.features.search.SearchViewModel
+import com.dpal.magpy.tagcache.InMemoryTagCache
 import com.dpal.rawg.RawgService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.subjects.BehaviorSubject
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
@@ -62,12 +70,25 @@ object Injector {
         }
     }
 
+    object Cache {
+        internal val tag: TagCache by lazy {
+            InMemoryTagCache()
+        }
+    }
+
     object Repository {
 
         internal val game: GameRepository
             get() {
                 return GameRepositoryImpl(
                     Api.gameService
+                )
+            }
+
+        internal val tag: TagRepository
+            get() {
+                return TagRepository.instance(
+                    cache = Cache.tag
                 )
             }
     }
@@ -84,7 +105,22 @@ object Injector {
         internal val getGameDetails: GetGameDetailsUseCase
             get() {
                 return GetGameDetailsUseCase(
-                    Repository.game
+                    Repository.game,
+                    Repository.tag
+                )
+            }
+
+        internal val saveGameTag: SaveGameTagUseCase
+            get() {
+                return SaveGameTagUseCase(
+                    Repository.tag
+                )
+            }
+
+        internal val removeGameTag: RemoveGameTagUseCase
+            get() {
+                return RemoveGameTagUseCase(
+                    Repository.tag
                 )
             }
     }
@@ -100,7 +136,9 @@ object Injector {
         internal fun gameDetails(id: String): GameDetailsViewModel {
             return GameDetailsViewModel(
                 id,
-                UseCases.getGameDetails
+                UseCases.getGameDetails,
+                UseCases.saveGameTag,
+                UseCases.removeGameTag
             )
         }
     }

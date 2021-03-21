@@ -39,12 +39,16 @@ dependencies {
     implementation Dependencies.Retrofit.core
     implementation Dependencies.Retrofit.gson
     implementation Dependencies.Retrofit.rx
+    debugImplementation Dependencies.Chucker.core
+    releaseImplementation Dependencies.Chucker.noop
     implementation project(':features:search')
     implementation project(':features:details')
     implementation project(':data:games')
+    implementation project(':data:tag')
     implementation project(':domain:search')
     implementation project(':domain:details')
     implementation project(':services:rawg')
+    implementation project(':services:tagcache')
 
 }
 

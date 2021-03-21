@@ -11,3 +11,5 @@ include ':features:search'
 include ':app'
 rootProject.name = "Magpy"
 include ':domain:dates'
+include ':data:tag'
+include ':services:tagcache'
