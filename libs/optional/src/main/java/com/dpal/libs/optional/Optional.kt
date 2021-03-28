@@ -1,5 +1,7 @@
 package com.dpal.libs.optional
 
+import java.lang.NullPointerException
+
 sealed class Optional<T> {
 
     data class Value<T>(
@@ -11,6 +13,7 @@ sealed class Optional<T> {
     ) : Optional<T>()
 }
 
-fun <T : Any> T.optional(): Optional<T> = Optional.Value(this)
+fun <T : Any> T?.optional(): Optional<T> =
+    if (this == null) Optional.Error(NullPointerException()) else Optional.Value(this)
 
 fun <T> Throwable.error(): Optional<T> = Optional.Error(this)

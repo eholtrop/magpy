@@ -1,3 +1,4 @@
+include ':domain:details'
 include ':libs:rxcache'
 include ':libs:rxandroid'
 include ':libs:optional'
@@ -9,3 +10,6 @@ include ':features:details'
 include ':features:search'
 include ':app'
 rootProject.name = "Magpy"
+include ':domain:dates'
+include ':data:tag'
+include ':services:tagcache'

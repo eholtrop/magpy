@@ -1,8 +1,8 @@
 package com.dpal.magpy.features.search
 
 import com.avianapps.drivable.Drivable
-import com.dpal.domain.search.SearchTile
 import com.dpal.domain.search.SearchForGamesUseCase
+import com.dpal.domain.search.SearchTile
 import com.dpal.libs.rxcache.ObservableCache
 import com.jakewharton.rx3.replayingShare
 import hu.akarnokd.rxjava3.bridge.RxJavaBridge.toV3Observable
@@ -52,5 +52,5 @@ class SearchViewModel(
     val gameClicked = games.map { it.map { it.clicked } }
         .flatMapIterable { it }
         .flatMap { it }
-        .map { SearchModels.Event.GameClicked(it.boxArt) }
+        .map { SearchModels.Event.GameClicked(it.id) }
 }

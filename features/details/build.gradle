@@ -5,20 +5,40 @@ plugins {
     id 'kotlin-android'
 }
 
+android {
+    buildFeatures {
+        compose true
+    }
+}
+
 
 dependencies {
     implementation Dependencies.Kotlin.stdLib
     implementation Dependencies.AndroidX.core
     implementation Dependencies.AndroidX.constraint
     implementation Dependencies.AndroidX.material
-    implementation Dependencies.coil
+    implementation Dependencies.Coil.core
+    implementation Dependencies.Coil.accompanist
     implementation Dependencies.Rx.java
     implementation Dependencies.Rx.android
     implementation Dependencies.Rx.Binding.core
     implementation Dependencies.drivable
     implementation Dependencies.Rx.bridge
+//    Dependencies.Compose.core
+//    Dependencies.Compose.tooling
+//    Dependencies.Compose.material
+//    Dependencies.Compose.foundation
+//    Dependencies.Compose.rxJava
+//    Dependencies.Compose.runtime
+    implementation "androidx.compose.ui:ui:1.0.0-beta01"
+    implementation "androidx.compose.material:material:1.0.0-beta01"
+    implementation "androidx.compose.ui:ui-tooling:1.0.0-beta01"
+    implementation 'androidx.compose.runtime:runtime:1.0.0-beta01'
+    implementation 'androidx.compose.runtime:runtime-rxjava3:1.0.0-beta01'
 
     implementation project(':libs:rxandroid')
     implementation project(':libs:rxcache')
     implementation project(':libs:style')
+    implementation project(':domain:details')
+
 }

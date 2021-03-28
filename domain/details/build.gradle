@@ -1,0 +1,14 @@
+import com.dpal.Dependencies
+
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+dependencies {
+    implementation Dependencies.Kotlin.stdLib
+    implementation Dependencies.Rx.java
+    implementation project(':data:games')
+    implementation project(':data:tag')
+    implementation project(':domain:dates')
+}

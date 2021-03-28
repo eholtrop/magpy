@@ -1,8 +1,10 @@
 package com.dpal.rawg
 
+import com.dpal.rawg.models.GameDetailsResponse
 import com.dpal.rawg.models.SearchResponse
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface RawgRetrofitService {
@@ -18,4 +20,10 @@ interface RawgRetrofitService {
         @Query("search_precise")
         searchPrecise: Boolean = true
     ): Observable<SearchResponse>
+
+    @GET("games/{id}")
+    fun details(
+        @Path("id")
+        id: String
+    ): Observable<GameDetailsResponse>
 }
