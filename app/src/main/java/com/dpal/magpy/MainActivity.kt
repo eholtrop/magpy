@@ -1,19 +1,24 @@
 package com.dpal.magpy
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import com.dpal.magpy.di.Injector
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var onBackPressed: (() -> Boolean)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         Injector.init(this)
+        setContent {
+            onBackPressed = App()
+        }
     }
 
     override fun onBackPressed() {
-        if (!Injector.appCoordinator.popBackStack()) {
+        if (!onBackPressed.invoke()) {
             super.onBackPressed()
         }
     }

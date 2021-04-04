@@ -5,7 +5,7 @@ import com.dpal.Config
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven {
             url "https://plugins.gradle.org/m2/"
         }
@@ -52,8 +52,7 @@ subprojects {
                 }
 
                 composeOptions {
-                    kotlinCompilerVersion "1.4.30"
-                    kotlinCompilerExtensionVersion "1.0.0-beta01"
+                    kotlinCompilerExtensionVersion Dependencies.Compose.version
                 }
             }
         }
@@ -63,6 +62,7 @@ subprojects {
 allprojects {
     repositories {
         google()
+        mavenCentral()
         jcenter()
         maven { url 'https://jitpack.io' }
     }

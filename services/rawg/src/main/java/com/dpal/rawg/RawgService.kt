@@ -12,7 +12,7 @@ import io.reactivex.rxjava3.core.Observable
 import retrofit2.Retrofit
 
 class RawgService(
-    val retrofit: Retrofit
+    retrofit: Retrofit
 ) : GameService {
 
     private val service = retrofit.create(RawgRetrofitService::class.java)
