@@ -2,12 +2,21 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
-      <module name="Magpy.app" target="1.8" />
+      <module name="Magpy.app" target="11" />
+      <module name="magpy.buildSrc" target="11" />
       <module name="Magpy.buildSrc" target="1.8" />
+      <module name="Magpy.data.games" target="1.8" />
+      <module name="Magpy.data.tag" target="1.8" />
+      <module name="Magpy.domain.details" target="11" />
       <module name="Magpy.domain.game" target="1.8" />
-      <module name="Magpy.features.search" target="1.8" />
-      <module name="Magpy.libs.style" target="1.8" />
+      <module name="Magpy.domain.search" target="1.8" />
+      <module name="Magpy.features.details" target="11" />
+      <module name="Magpy.features.search" target="11" />
+      <module name="Magpy.libs.optional" target="1.8" />
+      <module name="Magpy.libs.rxandroid" target="11" />
+      <module name="Magpy.libs.style" target="11" />
       <module name="Magpy.services.rawg" target="1.8" />
+      <module name="Magpy.services.tagcache" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

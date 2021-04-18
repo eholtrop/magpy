@@ -1,5 +1,10 @@
 package com.dpal.magpy.features.search
 
+import android.util.Log
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rxjava3.subscribeAsState
+import androidx.lifecycle.*
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.avianapps.drivable.Drivable
 import com.dpal.domain.search.SearchForGamesUseCase
 import com.dpal.domain.search.SearchTile
@@ -7,38 +12,40 @@ import com.dpal.libs.rxcache.ObservableCache
 import com.jakewharton.rx3.replayingShare
 import hu.akarnokd.rxjava3.bridge.RxJavaBridge.toV3Observable
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.subjects.BehaviorSubject
 import io.reactivex.rxjava3.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
 
 class SearchViewModel(
     val searchForGamesUseCase: SearchForGamesUseCase
-) {
+): ViewModel() {
 
-    val input = Input()
+    val searchSubject = BehaviorSubject.createDefault("")
+    val loadMoreSubject = BehaviorSubject.createDefault("")
 
-    class Input {
-        val query = Drivable<String>()
-        val loadMore = Drivable<Unit>()
+    val output = Output(this)
+
+    class Output(val viewModel: SearchViewModel) {
+
+        private var gamesCache = emptyList<SearchTile>()
+
+        @Composable
+        fun games() = viewModel.games.doOnNext { gamesCache = it }.subscribeAsState(initial = gamesCache)
     }
-
-    private val queryCache = ObservableCache(toV3Observable(input.query))
-    private val pageCache = ObservableCache(
-        toV3Observable(input.loadMore)
-            .scan(1) { page, _ -> page + 1 }
-    )
 
     private val searchActiveSubject = PublishSubject.create<Boolean>()
     val searchActive: Observable<Boolean> = searchActiveSubject.hide()
 
-    val games: Observable<List<SearchTile>> = queryCache
+    private val games: Observable<List<SearchTile>> = searchSubject
         .debounce(300, TimeUnit.MILLISECONDS)
         .switchMap { query ->
-            pageCache.clear()
-            pageCache
+            loadMoreSubject
+                .scan(0) { currentPage, _ -> currentPage + 1 }
                 .concatMap { page ->
                     searchForGamesUseCase(
-                        query,
-                        page
+                        query = query,
+                        page = page
                     ).doOnLifecycle(
                         { searchActiveSubject.onNext(true) },
                         { searchActiveSubject.onNext(false) }
@@ -47,10 +54,6 @@ class SearchViewModel(
                 }
                 .scan(emptyList<SearchTile>()) { list, page -> list + page }
         }
-        .replayingShare()
-
-    val gameClicked = games.map { it.map { it.clicked } }
-        .flatMapIterable { it }
-        .flatMap { it }
-        .map { SearchModels.Event.GameClicked(it.id) }
 }
+
+val <T: Any> T.exhaustive: T get() = this

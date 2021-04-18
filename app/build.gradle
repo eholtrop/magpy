@@ -15,6 +15,10 @@ android {
         buildConfigField "String", "RAWG_API_KEY", "\"" + propOrDef("RAWG_MAGPY_API_KEY", "") + "\""
     }
 
+    buildFeatures {
+        compose true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -41,6 +45,15 @@ dependencies {
     implementation Dependencies.Retrofit.rx
     debugImplementation Dependencies.Chucker.core
     releaseImplementation Dependencies.Chucker.noop
+
+    implementation Dependencies.Compose.core
+    implementation Dependencies.Compose.tooling
+    implementation Dependencies.Compose.material
+    implementation Dependencies.Compose.foundation
+    implementation Dependencies.Compose.rxJava
+    implementation Dependencies.Compose.runtime
+    implementation Dependencies.Compose.navigation
+
     implementation project(':features:search')
     implementation project(':features:details')
     implementation project(':data:games')

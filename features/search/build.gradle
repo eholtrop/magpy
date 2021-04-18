@@ -5,12 +5,20 @@ plugins {
     id 'kotlin-android'
 }
 
+android {
+    buildFeatures {
+        compose true
+    }
+}
+
 dependencies {
     implementation Dependencies.Kotlin.stdLib
     implementation Dependencies.AndroidX.core
+    implementation Dependencies.AndroidX.appCompat
     implementation Dependencies.AndroidX.constraint
     implementation Dependencies.AndroidX.material
     implementation Dependencies.Coil.core
+    implementation Dependencies.Coil.accompanist
     implementation Dependencies.Rx.java
     implementation Dependencies.Rx.android
     implementation Dependencies.Rx.kotlin
@@ -22,6 +30,14 @@ dependencies {
     implementation Dependencies.Rx.two
     implementation Dependencies.Rx.ReplayingShare.core
     implementation Dependencies.Rx.ReplayingShare.kotlin
+
+    implementation Dependencies.Compose.core
+    implementation Dependencies.Compose.tooling
+    implementation Dependencies.Compose.material
+    implementation Dependencies.Compose.foundation
+    implementation Dependencies.Compose.rxJava
+    implementation Dependencies.Compose.runtime
+    implementation Dependencies.Compose.viewModel
 
     implementation project(':domain:search')
     implementation project(':libs:rxandroid')

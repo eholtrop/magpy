@@ -24,7 +24,7 @@ object Dependencies {
 
     object AndroidX {
         const val core = "androidx.core:core-ktx:1.3.2"
-        const val appCompat = "androidx.appcompat:appcompat:1.2.0"
+        const val appCompat = "androidx.appcompat:appcompat:1.3.0-beta01"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:1.2.5"
         const val material = "com.google.android.material:material:1.3.0"
         const val constraint = "androidx.constraintlayout:constraintlayout:2.0.4"
@@ -60,32 +60,33 @@ object Dependencies {
     }
 
     object Compose {
-        const val core = "androidx.compose.ui:ui:1.0.0-beta01"
-        const val runtime = "androidx.compose.runtime:runtime:1.0.0-beta-01"
+        const val version = "1.0.0-beta01"
+        const val core = "androidx.compose.ui:ui:$version"
+        const val runtime = "androidx.compose.runtime:runtime:$version"
+        const val navigation = "androidx.navigation:navigation-compose:1.0.0-alpha09"
 
         // Tooling support (Previews, etc.)
-        const val tooling = "androidx.compose.ui:ui-tooling:1.0.0-beta01"
+        const val tooling = "androidx.compose.ui:ui-tooling:$version"
 
         // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-        const val foundation = "androidx.compose.foundation:foundation:1.0.0-beta01"
+        const val foundation = "androidx.compose.foundation:foundation:$version"
 
         // Material Design
-        const val material = "androidx.compose.material:material:1.0.0-beta01"
+        const val material = "androidx.compose.material:material:$version"
 
         // Material design icons
-        const val designIcons = "androidx.compose.material:material-icons-core:1.0.0-beta01"
+        const val designIcons = "androidx.compose.material:material-icons-core:$version"
         const val designIconsExtended =
-            "androidx.compose.material:material-icons-extended:1.0.0-beta01"
+            "androidx.compose.material:material-icons-extended:$version"
 
         // Integration with activities
         const val activity = "androidx.activity:activity-compose:1.3.0-alpha03"
 
         // Integration with ViewModels
-        const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02"
+        const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha03"
 
         // Integration with observables
-        const val liveData = "androidx.compose.runtime:runtime-livedata:1.0.0-beta01"
-        const val rxJava = "androidx.compose.runtime:runtime-rxjava3:1.0.0-beta01"
+        const val rxJava = "androidx.compose.runtime:runtime-rxjava3:$version"
     }
 
     object Chucker {
