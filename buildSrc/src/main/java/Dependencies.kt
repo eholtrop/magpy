@@ -100,7 +100,7 @@ object Dependencies {
         const val accompanist = "dev.chrisbanes.accompanist:accompanist-coil:0.6.1"
     }
 
-    val gradle = "com.android.tools.build:gradle:7.0.0-alpha08"
+    val gradle = "com.android.tools.build:gradle:7.0.0-alpha14"
 
     const val drivable = "com.github.eholtrop:drivable:1.0.1"
 
