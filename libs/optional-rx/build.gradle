@@ -10,9 +10,8 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-
 dependencies {
+    implementation Dependencies.Kotlin.stdLib
     implementation Dependencies.Rx.java
-    api project(':libs:optional')
-    api project(':libs:optional-rx')
+    implementation project(':libs:optional')
 }

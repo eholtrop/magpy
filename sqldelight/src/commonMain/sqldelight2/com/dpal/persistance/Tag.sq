@@ -1,0 +1,19 @@
+import kotlin.collections.List;
+
+CREATE TABLE tagEntity (
+  id TEXT NOT NULL PRIMARY KEY,
+  resources TEXT AS List<String> NOT NULL,
+  title TEXT NOT NULL
+);
+
+selectAll:
+SELECT * FROM tagEntity;
+
+get:
+SELECT * FROM tagEntity WHERE id = ?;
+
+insert:
+INSERT OR REPLACE INTO tagEntity(id, resources, title) VALUES(?, ?, ?);
+
+remove:
+DELETE FROM tagEntity WHERE id = ?;

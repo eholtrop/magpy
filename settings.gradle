@@ -13,3 +13,5 @@ rootProject.name = "Magpy"
 include ':domain:dates'
 include ':data:tag'
 include ':services:tagcache'
+include ':sqldelight'
+include ':libs:optional-rx'

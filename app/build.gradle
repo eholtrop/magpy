@@ -62,6 +62,7 @@ dependencies {
     implementation project(':domain:details')
     implementation project(':services:rawg')
     implementation project(':services:tagcache')
+    implementation(project(":sqldelight"))
 
 }
 

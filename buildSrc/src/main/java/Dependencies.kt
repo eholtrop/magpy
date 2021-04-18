@@ -17,7 +17,7 @@ object Dependencies {
     }
 
     object Kotlin {
-        private const val kotlinVersion = "1.4.30"
+        private const val kotlinVersion = "1.4.31"
         const val gradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         const val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     }
@@ -98,6 +98,14 @@ object Dependencies {
     object Coil {
         const val core = "io.coil-kt:coil:1.1.1"
         const val accompanist = "dev.chrisbanes.accompanist:accompanist-coil:0.6.1"
+    }
+
+    object SqlDelight {
+        private const val version = "1.4.4"
+        const val android = "com.squareup.sqldelight:android-driver:$version"
+        const val rxjava3 = "com.squareup.sqldelight:rxjava3-extensions:$version"
+        const val native = "com.squareup.sqldelight:native-driver:$version"
+        const val runtime = "com.squareup.sqldelight:runtime:$version"
     }
 
     val gradle = "com.android.tools.build:gradle:7.0.0-alpha14"

@@ -14,11 +14,14 @@ buildscript {
         classpath Dependencies.gradle
         classpath Dependencies.Kotlin.gradle
         classpath Dependencies.Klint.gradle
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.30'
+        classpath 'com.squareup.sqldelight:gradle-plugin:1.4.4'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32'
     }
 }
 
+apply plugin: 'kotlin'
 apply plugin: Dependencies.Klint.plugin
+apply plugin: 'com.squareup.sqldelight'
 
 subprojects {
 
@@ -66,8 +69,4 @@ allprojects {
         jcenter()
         maven { url 'https://jitpack.io' }
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
