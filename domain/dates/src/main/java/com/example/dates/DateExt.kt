@@ -1,7 +1,7 @@
 package com.example.dates
 
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 fun Date?.formatForUi(
     format: String = "MMMM dd, yyyy",

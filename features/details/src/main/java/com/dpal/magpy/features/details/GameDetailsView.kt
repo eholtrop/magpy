@@ -1,39 +1,37 @@
 package com.dpal.magpy.features.details
 
-import android.widget.Toast
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.Transition
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 
 import androidx.compose.runtime.rxjava3.subscribeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
 import com.dpal.domain.details.GameDomain
-import com.dpal.domain.details.SaveGameTagUseCase
 import com.dpal.domain.details.TagDomain
 import dev.chrisbanes.accompanist.coil.CoilImage
-import java.util.*
+import java.util.Random
 
 class GameDetailsView(
     private val viewModel: GameDetailsViewModel
@@ -149,9 +147,7 @@ class GameDetailsView(
     @Composable
     fun fab(state: GameDomain) {
 
-
         var showCreateTagDialog by remember { mutableStateOf(false) }
-
 
         Crossfade(
             targetState = showCreateTagDialog,
@@ -215,8 +211,8 @@ class GameDetailsView(
             blue = rnd.nextInt(256),
             red = rnd.nextInt(256)
         )
-        //TODO: luminence isnt working properly. need to fix for accesibility
-        //could also add a outline to the text in the tags
+        //  TODO: luminence isnt working properly. need to fix for accesibility
+        //  could also add a outline to the text in the tags
         val isDarkColor = ColorUtils.calculateLuminance(backgroundColor.value.toInt()) < 0.5
         ClickableText(
             text = AnnotatedString(tag.title),

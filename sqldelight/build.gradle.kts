@@ -19,6 +19,7 @@ android {
         create("androidTestApi")
         create("androidTestDebugApi")
         create("androidTestReleaseApi")
+        create("androidAndroidTestRelease")
         create("testApi")
         create("testDebugApi")
         create("testReleaseApi")
@@ -26,17 +27,17 @@ android {
 }
 kotlin {
     android()
-    ios {
-        binaries {
-            framework {
-                baseName = "sqldelight"
-            }
-        }
-    }
+//    ios {
+//        binaries {
+//            framework {
+//                baseName = "sqldelight"
+//            }
+//        }
+//    }
     sourceSets {
         val commonMain by getting
         val androidMain by getting
-        val iosMain by getting
+//        val iosMain by getting
 
 
         androidMain.dependencies {
@@ -46,10 +47,10 @@ kotlin {
             implementation(Dependencies.SqlDelight.android)
             implementation(Dependencies.SqlDelight.rxjava3)
         }
-        
-        iosMain.dependencies {
-            implementation(Dependencies.SqlDelight.native)
-        }
+
+//        iosMain.dependencies {
+//            implementation(Dependencies.SqlDelight.native)
+//        }
 
         commonMain.dependencies {
             implementation(Dependencies.SqlDelight.runtime)

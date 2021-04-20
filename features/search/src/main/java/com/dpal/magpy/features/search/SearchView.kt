@@ -1,6 +1,5 @@
 package com.dpal.magpy.features.search
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -12,7 +11,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
-import androidx.compose.runtime.rxjava3.subscribeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -32,7 +30,6 @@ fun SearchToolbarPreview() {
     SearchToolbar(searchChanged = { })
 }
 
-
 @Composable
 private fun SearchToolbar(
     query: String = "",
@@ -50,9 +47,7 @@ private fun SearchToolbar(
                 query = it
                 searchChanged.invoke(it)
             },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
+            modifier = Modifier.fillMaxWidth().padding(8.dp),
             placeholder = {
                 Text(
                     text = "Search"

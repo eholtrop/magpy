@@ -13,9 +13,7 @@ import com.dpal.games.data.GameRepositoryImpl
 import com.dpal.games.data.GameService
 import com.dpal.magpy.MainActivity
 import com.dpal.magpy.features.details.GameDetailsViewModel
-import com.dpal.magpy.features.search.SearchRouter
 import com.dpal.magpy.features.search.SearchViewModel
-import com.dpal.magpy.tagcache.InMemoryTagCache
 import com.dpal.persistance.sqldelight.SqlDelightTagCache
 import com.dpal.rawg.RawgService
 import com.google.gson.Gson

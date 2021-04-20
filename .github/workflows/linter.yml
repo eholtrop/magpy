@@ -2,7 +2,7 @@ name: reviewdog
 on: [pull_request]
 jobs:
   ktlint:
-    name: Check Code Quality
+    name: lint
     runs-on: ubuntu-latest
 
     steps:
@@ -10,9 +10,9 @@ jobs:
         uses: actions/checkout@master
         with:
           fetch-depth: 1
-      - name: ktlint
-        uses: ScaCap/action-ktlint@master
+      - name: detekt
+        uses: DominuS-RU/Detekt-Action@v1.16.0
         with:
           github_token: ${{ secrets.github_token }}
-          reporter: github-pr-check
-          android: true
+          reviewdog_reporter: github-pr-check
+          detekt_config: config/detekt/config.yml

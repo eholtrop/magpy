@@ -4,7 +4,7 @@ import com.dpal.libs.optional.Optional
 import com.example.optional_rx.unwrap
 import io.reactivex.rxjava3.core.Observable
 import java.lang.NullPointerException
-import java.util.*
+import java.util.UUID
 
 interface TagCache {
     fun getAll(): Observable<List<Tag>>
@@ -85,10 +85,13 @@ internal class TagRepositoryImpl(
     }
 
     override fun create(title: String): Observable<Tag> {
-        return Tag(id = UUID.randomUUID().toString(), title = title, resources = mutableListOf<String>()).let {
+        return Tag(
+            id = UUID.randomUUID().toString(),
+            title = title,
+            resources = mutableListOf<String>()
+        ).let {
             cache.save(it)
             cache.get(id = it.id).unwrap()
         }
     }
-
 }
