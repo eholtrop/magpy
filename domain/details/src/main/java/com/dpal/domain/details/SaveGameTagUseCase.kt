@@ -1,6 +1,5 @@
 package com.dpal.domain.details
 
-import com.dpal.data.tag.Tag
 import com.dpal.data.tag.TagRepository
 import io.reactivex.rxjava3.core.Observable
 

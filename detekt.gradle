@@ -1,0 +1,22 @@
+
+apply plugin: "io.gitlab.arturbosch.detekt"
+
+detekt {
+    basePath = projectDir
+
+    autoCorrect = true
+
+    baseline = file"${rootProject.projectDir}/config/detekt/baseline.xml"
+
+    reports {
+        html {
+            enabled = true
+            destination = file("$rootDir/build/reports/detekt.html")
+        }
+    }
+}
+
+dependencies {
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0"
+    detektPlugins 'io.gitlab.arturbosch.detekt:detekt-cli:1.16.0'
+}

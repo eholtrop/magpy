@@ -1,6 +1,6 @@
 package com.dpal.games.data
 
-import java.util.*
+import java.util.Date
 
 data class GameDetails(
     val id: String,

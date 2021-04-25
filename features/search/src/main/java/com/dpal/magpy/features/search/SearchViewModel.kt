@@ -1,25 +1,19 @@
 package com.dpal.magpy.features.search
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rxjava3.subscribeAsState
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.avianapps.drivable.Drivable
 import com.dpal.domain.search.SearchForGamesUseCase
 import com.dpal.domain.search.SearchTile
-import com.dpal.libs.rxcache.ObservableCache
-import com.jakewharton.rx3.replayingShare
-import hu.akarnokd.rxjava3.bridge.RxJavaBridge.toV3Observable
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import io.reactivex.rxjava3.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
 
 class SearchViewModel(
     val searchForGamesUseCase: SearchForGamesUseCase
-): ViewModel() {
+) : ViewModel() {
 
     val searchSubject = BehaviorSubject.createDefault("")
     val loadMoreSubject = BehaviorSubject.createDefault("")
@@ -56,4 +50,4 @@ class SearchViewModel(
         }
 }
 
-val <T: Any> T.exhaustive: T get() = this
+val <T : Any> T.exhaustive: T get() = this

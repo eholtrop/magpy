@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>FinalNewline:build.gradle.kts:1</ID>
+    <ID>FinalNewline:com.dpal.Dependencies.kt:1</ID>
+    <ID>FinalNewline:com.dpal.persistance.sqldelight.DriverFactory.kt:1</ID>
+    <ID>ForbiddenComment:GameDetailsView.kt$GameDetailsView$// TODO: luminence isnt working properly. need to fix for accesibility</ID>
+    <ID>ForbiddenComment:ViewInflater.kt$ViewInflater$// TODO: override basic view inflation to allow for custom xml tags (without extending the classes!)</ID>
+    <ID>LongMethod:SearchView.kt$@Composable fun SearchView( viewModel: SearchViewModel, router: SearchRouter )</ID>
+    <ID>MagicNumber:GameDetailsView.kt$GameDetailsView$0.5</ID>
+    <ID>MagicNumber:GameDetailsView.kt$GameDetailsView$256</ID>
+    <ID>MagicNumber:SearchViewModel.kt$SearchViewModel$300</ID>
+    <ID>MaxLineLength:DriverFactory.kt$fun &lt;T&gt; Observable&lt;List&lt;T&gt;&gt;.filterEach(predicate: (T) -&gt; Boolean): Observable&lt;List&lt;T&gt;&gt;</ID>
+    <ID>MaximumLineLength:com.dpal.persistance.sqldelight.DriverFactory.kt:32</ID>
+    <ID>MayBeConst:Dependencies.kt$Dependencies$val gradle = "com.android.tools.build:gradle:7.0.0-alpha14"</ID>
+    <ID>NewLineAtEndOfFile:Dependencies.kt$com.dpal.Dependencies.kt</ID>
+    <ID>NewLineAtEndOfFile:DriverFactory.kt$com.dpal.persistance.sqldelight.DriverFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:build.gradle.kts$.build.gradle.kts</ID>
+    <ID>NoBlankLineBeforeRbrace:com.dpal.persistance.sqldelight.DriverFactory.kt:52</ID>
+    <ID>NoBlankLineBeforeRbrace:com.dpal.persistance.sqldelight.DriverFactory.kt:89</ID>
+    <ID>NoConsecutiveBlankLines:build.gradle.kts:42</ID>
+    <ID>NoConsecutiveBlankLines:com.dpal.persistance.sqldelight.DriverFactory.kt:49</ID>
+    <ID>NoWildcardImports:com.dpal.magpy.features.details.GameDetailsView.kt:12</ID>
+    <ID>NoWildcardImports:com.dpal.magpy.features.details.GameDetailsView.kt:7</ID>
+    <ID>NoWildcardImports:com.dpal.magpy.features.search.SearchView.kt:13</ID>
+    <ID>NoWildcardImports:com.dpal.magpy.features.search.SearchView.kt:7</ID>
+    <ID>NoWildcardImports:com.dpal.magpy.features.search.SearchViewModel.kt:5</ID>
+    <ID>NoWildcardImports:com.dpal.magpy.tagcache.InMemoryTagCache.kt:9</ID>
+    <ID>NoWildcardImports:com.dpal.rawg.models.GameDetailsResponse.kt:4</ID>
+    <ID>NoWildcardImports:com.dpal.rawg.models.SearchResponse.kt:4</ID>
+    <ID>PackageName:com.example.optional_rx.RxOptional.kt:1</ID>
+    <ID>PackageNaming:RxOptional.kt$package com.example.optional_rx</ID>
+    <ID>TopLevelPropertyNaming:SearchForGamesUseCase.kt$private const val PageSize = 10</ID>
+    <ID>WildcardImport:GameDetailsView.kt$import androidx.compose.foundation.layout.*</ID>
+    <ID>WildcardImport:GameDetailsView.kt$import androidx.compose.material.*</ID>
+    <ID>WildcardImport:SearchView.kt$import androidx.compose.foundation.layout.*</ID>
+    <ID>WildcardImport:SearchView.kt$import androidx.compose.runtime.*</ID>
+    <ID>WildcardImport:SearchViewModel.kt$import androidx.lifecycle.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

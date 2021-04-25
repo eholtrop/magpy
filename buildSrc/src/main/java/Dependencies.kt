@@ -10,14 +10,8 @@ object Config {
 
 object Dependencies {
 
-
-    object Klint {
-        const val gradle = "org.jlleitschuh.gradle:ktlint-gradle:9.4.1"
-        const val plugin = "org.jlleitschuh.gradle.ktlint"
-    }
-
     object Kotlin {
-        private const val kotlinVersion = "1.4.30"
+        private const val kotlinVersion = "1.4.31"
         const val gradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         const val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     }
@@ -100,9 +94,19 @@ object Dependencies {
         const val accompanist = "dev.chrisbanes.accompanist:accompanist-coil:0.6.1"
     }
 
+    object SqlDelight {
+        private const val version = "1.4.4"
+        const val android = "com.squareup.sqldelight:android-driver:$version"
+        const val rxjava3 = "com.squareup.sqldelight:rxjava3-extensions:$version"
+        const val native = "com.squareup.sqldelight:native-driver:$version"
+        const val runtime = "com.squareup.sqldelight:runtime:$version"
+    }
+
     val gradle = "com.android.tools.build:gradle:7.0.0-alpha14"
 
     const val drivable = "com.github.eholtrop:drivable:1.0.1"
+
+    const val okhttpProfiler = "com.localebro:okhttpprofiler:1.0.8"
 
     const val junit = "junit:junit:4.0"
     const val espresso = "androidx.test.espresso:espresso-core:3.3.0"

@@ -1,20 +1,19 @@
 package com.dpal.magpy
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import com.dpal.magpy.di.Injector
 import com.dpal.magpy.features.details.GameDetailsView
 import com.dpal.magpy.features.search.SearchModels
 import com.dpal.magpy.features.search.SearchView
 import com.dpal.magpy.features.search.exhaustive
 
-sealed class AppState {
-    object Search : AppState()
-    data class Details(val id: String) : AppState()
-}
-
 @Composable
-fun App(): (() -> Boolean) {
+fun app(): (() -> Boolean) {
     var state by remember { mutableStateOf<AppState>(AppState.Search) }
 
     Box {

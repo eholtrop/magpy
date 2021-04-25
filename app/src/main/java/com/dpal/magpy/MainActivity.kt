@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Injector.init(this)
         setContent {
-            onBackPressed = App()
+            onBackPressed = app()
         }
     }
 

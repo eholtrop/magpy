@@ -56,5 +56,4 @@ class InMemoryTagCache : TagCache {
     override fun delete(tag: Tag): Observable<Tag> {
         TODO("Not yet implemented")
     }
-
 }
