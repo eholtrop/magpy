@@ -53,6 +53,7 @@ dependencies {
     implementation Dependencies.Compose.rxJava
     implementation Dependencies.Compose.runtime
     implementation Dependencies.Compose.navigation
+    implementation Dependencies.okhttpProfiler
 
     implementation project(':features:search')
     implementation project(':features:details')

@@ -12,6 +12,7 @@ import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 
@@ -128,7 +129,7 @@ class GameDetailsView(
                         .padding(top = 4.dp)
                         .animateContentSize()
                 ) {
-                    state.gameTags.forEach { chip(tag = it) }
+//                    state.gameTags.forEach { chip(tag = it) }
                 }
                 Text(
                     text = "Description",

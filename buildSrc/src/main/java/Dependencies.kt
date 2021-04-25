@@ -106,6 +106,8 @@ object Dependencies {
 
     const val drivable = "com.github.eholtrop:drivable:1.0.1"
 
+    const val okhttpProfiler = "com.localebro:okhttpprofiler:1.0.8"
+
     const val junit = "junit:junit:4.0"
     const val espresso = "androidx.test.espresso:espresso-core:3.3.0"
 }

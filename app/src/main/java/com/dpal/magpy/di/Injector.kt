@@ -11,6 +11,7 @@ import com.dpal.domain.search.SearchForGamesUseCase
 import com.dpal.games.data.GameRepository
 import com.dpal.games.data.GameRepositoryImpl
 import com.dpal.games.data.GameService
+import com.dpal.magpy.BuildConfig
 import com.dpal.magpy.MainActivity
 import com.dpal.magpy.features.details.GameDetailsViewModel
 import com.dpal.magpy.features.search.SearchViewModel
@@ -18,6 +19,7 @@ import com.dpal.persistance.sqldelight.SqlDelightTagCache
 import com.dpal.rawg.RawgService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.localebro.okhttpprofiler.OkHttpProfilerInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
@@ -38,10 +40,13 @@ object Injector {
                 .baseUrl("https://api.rawg.io/api/")
                 .client(
                     OkHttpClient.Builder()
-                        .addInterceptor(
-                            ChuckerInterceptor.Builder(appContext)
-                                .build()
-                        )
+                        .addInterceptor(OkHttpProfilerInterceptor())
+                        .addInterceptor(ChuckerInterceptor.Builder(appContext).build())
+                        .addInterceptor { chain ->
+                            val url = chain.request().url().newBuilder().addQueryParameter("key", BuildConfig.RAWG_API_KEY).build()
+                            val request = chain.request().newBuilder().url(url).build()
+                            chain.proceed(request)
+                        }
                         .build()
                 )
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
