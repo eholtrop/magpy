@@ -6,6 +6,7 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -40,10 +41,26 @@ kotlin {
     }
     
     sourceSets {
-        commonMain.dependencies {
-            implementation(libs.ktor.clientCore)
-            implementation(libs.ktor.serverCore)
+        androidMain.dependencies {
+            implementation(libs.ktor.client.okhttp)
+
         }
+
+        commonMain.dependencies {
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.serverCore)
+            implementation(libs.ktor.client.contentNegotiation)
+            implementation(libs.ktor.json)
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlinx.datetime)
+        }
+
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
+
+        }
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }

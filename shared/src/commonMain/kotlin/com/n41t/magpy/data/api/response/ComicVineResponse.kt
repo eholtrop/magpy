@@ -22,9 +22,11 @@ data class ComicIssue(
     val name: String?,
     @SerialName("issue_number")
     val issueNumber: String?,
+    @SerialName("store_date")
+    val storeDate: String?,
     val description: String? = null,
     val image: Image?,
-    val volume: VolumeInfo?,
+    val volume: VolumeInfo?
 )
 
 @Serializable
